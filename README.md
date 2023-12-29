@@ -32,17 +32,3 @@ This project is a C++ implementation of the classic snake game, with enhanced fe
 Textures and colors come from my childhood anime [Pokémon](https://wikipedia.org/wiki/Pok%C3%A9mon).  
 Font comes from [dafont.com](https://www.dafont.com/04b-30.font).  
 Special thanks to [udacity/CppND-Snake-Game](https://github.com/udacity/CppND-Capstone-Snake-Game) for becoming the starter code for this project.
-
-## CC Attribution-ShareAlike 4.0 International
-
-
-Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
-
-This work is licensed under a
-[Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
-
-[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
-
-[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
-[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
-[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
