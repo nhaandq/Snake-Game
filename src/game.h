@@ -2,10 +2,9 @@
 #define GAME_H
 
 #include <random>
-#include "SDL2/SDL.h"
 #include "controller.h"
 #include "renderer.h"
-#include "snake.h"
+#include "model.h"
 
 class Game {
  public:
@@ -17,12 +16,13 @@ class Game {
 
  private:
   Snake snake;
-  SDL_Point food;
+  Food food;
 
   std::random_device dev;
   std::mt19937 engine;
   std::uniform_int_distribution<int> random_w;
   std::uniform_int_distribution<int> random_h;
+  std::uniform_int_distribution<int> random_label;
 
   int score{0};
 
