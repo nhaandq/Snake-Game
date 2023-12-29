@@ -1,3 +1,0 @@
-/mnt/d/Cpp/snake-game/build/CMakeFiles/SnakeGame.dir
-/mnt/d/Cpp/snake-game/build/CMakeFiles/edit_cache.dir
-/mnt/d/Cpp/snake-game/build/CMakeFiles/rebuild_cache.dir
