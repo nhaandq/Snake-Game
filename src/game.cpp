@@ -17,7 +17,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
   PlaceFood();
 }
 
-void Game::Run(Controller const &controller, Renderer &renderer,
+void Game::Run(Controller const controller, std::unique_ptr<Renderer> renderer,
                std::size_t target_frame_duration)
 {
   Uint32 title_timestamp = SDL_GetTicks();
@@ -33,7 +33,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     {
     case kGameState::kHomeState:
       frame_count = 0;
-      renderer.Render(homeWindow);
+      renderer->Render(homeWindow);
       while (state == kGameState::kHomeState)
       {
         HandleInput(homeWindow, renderer);
@@ -49,7 +49,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
         // Input, Update, Render - the main game loop.
         controller.HandleInput(state, snake);
         Update();
-        renderer.Render(snake, food);
+        renderer->Render(snake, food);
 
         frame_end = SDL_GetTicks();
 
@@ -60,7 +60,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
         // After every second, update the window title.
         if (frame_end - title_timestamp >= 1000)
         {
-          renderer.UpdateWindowTitle(score, frame_count);
+          renderer->UpdateWindowTitle(score, frame_count);
           frame_count = 0;
           title_timestamp = frame_end;
         }
@@ -77,7 +77,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     case kGameState::kPausingState:
       frame_count = 0;
-      renderer.Render(pauseWindow);
+      renderer->Render(pauseWindow);
       while (state == kGameState::kPausingState)
       {
         HandleInput(pauseWindow);
@@ -86,7 +86,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     case kGameState::kOverState:
       frame_count = 0;
-      renderer.Render(overWindow, score);
+      renderer->Render(overWindow, score);
       while (state == kGameState::kOverState)
       {
         HandleInput(overWindow);
@@ -101,7 +101,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 }
 
 // Handle click and input event on home screen
-void Game::HandleInput(HomeWindow &window, Renderer &renderer)
+void Game::HandleInput(HomeWindow &window, std::unique_ptr<Renderer> &renderer)
 {
   bool first_input = true;
   bool render_text = false;
@@ -124,7 +124,7 @@ void Game::HandleInput(HomeWindow &window, Renderer &renderer)
       else if (window.logButton.IsClicked())
       {
         window.inputting = true;
-        renderer.Render(window.messagebox);
+        renderer->Render(window.messagebox);
       }
       else if (window.quitButton.IsClicked())
       {
@@ -172,7 +172,7 @@ void Game::HandleInput(HomeWindow &window, Renderer &renderer)
           window.inputbox.text = "";
           usr = "";
           window.logButton.SetText("LOG");
-          renderer.Render(window);
+          renderer->Render(window);
         }
         // Handle enter
         else if (e.key.keysym.sym == SDLK_RETURN || e.key.keysym.sym == SDLK_KP_ENTER)
@@ -190,7 +190,7 @@ void Game::HandleInput(HomeWindow &window, Renderer &renderer)
             logged = false;
             window.logButton.SetText("LOG");
           }
-          renderer.Render(window);
+          renderer->Render(window);
         }
       }
       // Special text input event
@@ -218,12 +218,12 @@ void Game::HandleInput(HomeWindow &window, Renderer &renderer)
     {
       // Render new text
       window.inputbox.text += usr;
-      renderer.Render(window.inputbox);
+      renderer->Render(window.inputbox);
     }
     // Text is empty
     else
     {
-      renderer.Render(window.inputbox);
+      renderer->Render(window.inputbox);
     }
   }
 }

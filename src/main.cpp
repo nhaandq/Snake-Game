@@ -1,9 +1,11 @@
-#include <iostream>
 #include "controller.h"
 #include "game.h"
 #include "renderer.h"
+#include <iostream>
+#include <memory>
 
-int main() {
+int main()
+{
   constexpr std::size_t kFramesPerSecond{60};
   constexpr std::size_t kMsPerFrame{1000 / kFramesPerSecond};
   constexpr std::size_t kScreenWidth{800};
@@ -11,10 +13,10 @@ int main() {
   constexpr std::size_t kGridWidth{32};
   constexpr std::size_t kGridHeight{32};
 
-  Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
+  auto renderer = std::make_unique<Renderer>(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
   Controller controller;
   Game game(kGridWidth, kGridHeight);
-  game.Run(controller, renderer, kMsPerFrame);
+  game.Run(controller, std::move(renderer), kMsPerFrame);
   std::cout << "Game has terminated successfully!\n";
   std::cout << "User: " << game.GetUser() << "\n";
   std::cout << "Size: " << game.GetSize() << "\n";

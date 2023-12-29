@@ -22,9 +22,9 @@ class Game
 {
 public:
   Game(std::size_t grid_width, std::size_t grid_height);
-  void Run(Controller const &controller, Renderer &renderer,
+  void Run(Controller const controller, std::unique_ptr<Renderer> renderer,
            std::size_t target_frame_duration);
-  void HandleInput(HomeWindow &window, Renderer &renderer);
+  void HandleInput(HomeWindow &window, std::unique_ptr<Renderer> &renderer);
   void HandleInput(PauseWindow &window);
   void HandleInput(OverWindow &window);
 
@@ -58,4 +58,4 @@ private:
   void Log();
 };
 
-#endif
+#endif /* game.h */

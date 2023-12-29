@@ -39,4 +39,4 @@ class Snake {
   int grid_height;
 };
 
-#endif
+#endif /* snake.h */

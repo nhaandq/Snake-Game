@@ -5,13 +5,14 @@
 
 enum class kGameState;
 
-class Controller {
- public:
-  void HandleInput(kGameState &state, Snake &snake) const;
+class Controller
+{
+public:
+    void HandleInput(kGameState &state, Snake &snake) const;
 
- private:
-  void ChangeDirection(Snake &snake, Snake::Direction input,
-                       Snake::Direction opposite) const;
+private:
+    void ChangeDirection(Snake &snake, Snake::Direction input,
+                         Snake::Direction opposite) const;
 };
 
-#endif
+#endif /* controller.h */
