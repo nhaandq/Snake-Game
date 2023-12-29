@@ -1,11 +1,13 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "snake.h"
+#include "model.h"
+
+enum class kGameState;
 
 class Controller {
  public:
-  void HandleInput(bool &running, Snake &snake) const;
+  void HandleInput(kGameState &state, Snake &snake) const;
 
  private:
   void ChangeDirection(Snake &snake, Snake::Direction input,

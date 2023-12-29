@@ -77,3 +77,15 @@ bool Snake::SnakeCell(int x, int y) {
   }
   return false;
 }
+
+void Snake::Reset()
+{
+  // Reset all snake properties
+  direction = Direction::kUp;
+  speed = 0.1f;
+  size = 1;
+  alive = true;
+  head_x = grid_width / 2;
+  head_y = grid_height / 2;
+  body.clear();
+}
