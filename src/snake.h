@@ -28,6 +28,7 @@ class Snake {
   float head_x;
   float head_y;
   std::vector<SDL_Point> body;
+  bool poisoned{false};
 
  private:
   void UpdateHead();

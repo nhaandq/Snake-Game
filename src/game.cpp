@@ -346,11 +346,29 @@ void Game::Update()
   // Check if there's food over here
   if (food.AtCell(new_x, new_y))
   {
-    score++;
-    PlaceFood();
-    // Grow snake and increase speed.
+    // Grow snake and change speed and score
     snake.GrowBody();
-    snake.speed += 0.02;
+    switch (food.GetType())
+    {
+    case Food::kType::kPoison:
+      snake.poisoned = true;
+      snake.speed *= 0.75;
+      break;
+
+    case Food::kType::kSuper:
+      score += 3;
+      snake.poisoned = false;
+      snake.speed *= 1.5;
+      break;
+
+    case Food::kType::kNormal:
+      score++;
+      snake.poisoned = false;
+      snake.speed += 0.02;
+      break;
+    }
+
+    PlaceFood();
   }
 }
 

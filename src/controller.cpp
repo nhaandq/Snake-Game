@@ -1,6 +1,6 @@
 #include "controller.h"
 #include "SDL2/SDL.h"
-#include "snake.h"
+#include "model.h"
 #include <iostream>
 
 #include "game.h"
@@ -8,8 +8,8 @@
 void Controller::ChangeDirection(Snake &snake, Snake::Direction input,
                                  Snake::Direction opposite) const
 {
-  if (snake.direction != opposite || snake.size == 1)
-    snake.direction = input;
+  if (snake.direction != input && snake.direction != opposite || snake.size == 1)
+    snake.direction = snake.poisoned ? opposite : input;
   return;
 }
 
