@@ -295,4 +295,6 @@ CMakeFiles/SnakeGame.dir/src/main.cpp.o: \
  /usr/include/c++/11/bits/stl_numeric.h /usr/include/c++/11/bit \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /mnt/d/Cpp/snake-game/src/renderer.h
+ /mnt/d/Cpp/snake-game/src/renderer.h /usr/include/SDL2/SDL_image.h \
+ /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_ttf.h \
+ /mnt/d/Cpp/snake-game/src/model.h
